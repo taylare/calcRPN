@@ -1,7 +1,5 @@
 package calcrpn;
 
-
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,7 +35,7 @@ public class CalcBrainTest {
     /**
      * Test of digit method, of class CalcBrain.
      */
-@Test
+    @Test
     public void testDigit() {
         System.out.println("Testing digits");
         
@@ -76,7 +74,7 @@ public class CalcBrainTest {
                     ,delta);        
     }
 
-        @Test
+    @Test
     public void testAddThreeNumbers() {
         System.out.println("Testing addition");
         String enterFirstDigit = "3";
@@ -101,7 +99,7 @@ public class CalcBrainTest {
                     ,delta);        
     }
     
-        @Test
+    @Test
     public void testSubtractThreeNumbers() {
         System.out.println("Testing subtraction");
         String enterFirstDigit = "3";
@@ -153,7 +151,7 @@ public class CalcBrainTest {
                     ,delta);        
     }  
     
-       @Test
+    @Test
     public void testAddTwoDecimals() {
         System.out.println("Testing decimal addition");
         String enterOperator = "+";
@@ -346,5 +344,76 @@ public class CalcBrainTest {
                    , Float.parseFloat(result.replaceAll("^[^\\n]*\\n",""))
                     ,delta);        
     }            
+
+    /**
+     * Test of operator method, of class CalcBrain.
+     */
+    @Test
+    public void testOperator() {
+        System.out.println("operator");
+        String op = "";
+        CalcBrain instance = new CalcBrain();
+        String expResult = "";
+        String result = instance.operator(op);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of clearEntry method, of class CalcBrain.
+     */
+    @Test
+    public void testClearEntry() {
+        System.out.println("clearEntry");
+        CalcBrain instance = new CalcBrain();
+        String expResult = "";
+        String result = instance.clearEntry();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of clear method, of class CalcBrain.
+     */
+    @Test
+    public void testClear() {
+        System.out.println("clear");
+        CalcBrain instance = new CalcBrain();
+        String expResult = "";
+        String result = instance.clear();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of enterPressed method, of class CalcBrain.
+     */
+    @Test
+    public void testEnterPressed() {
+        System.out.println("enterPressed");
+        CalcBrain instance = new CalcBrain();
+        String expResult = "";
+        String result = instance.enterPressed();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addDecimal method, of class CalcBrain.
+     */
+    @Test
+    public void testAddDecimal() {
+        System.out.println("addDecimal");
+        CalcBrain instance = new CalcBrain();
+        String expResult = "";
+        String result = instance.addDecimal();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
