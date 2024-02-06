@@ -10,10 +10,12 @@ import java.util.Stack;
 
 public class CalcBrain implements CalcRPNOperations {
     Stack<Float> results;
+    String operand;
     
     public CalcBrain()   {                     //serves as calculator's working memory
         results = new Stack<Float>();          //instantiated stack in the constructor so that stack-
-    }                                          //is built in the application memory
+        operand = "";                          //is built in the application memory
+    }                                          
     
     @Override
     public String digit(String digit) {
