@@ -1,5 +1,7 @@
 package calcrpn;  
 
+import java.util.Stack;
+
 /**
  * @author Tayla Rechichi
  * Date Created: February 06, 2024
@@ -7,10 +9,15 @@ package calcrpn;
  */
 
 public class CalcBrain implements CalcRPNOperations {
-
+    Stack<Float> results;
+    
+    public CalcBrain()   {                     //serves as calculator's working memory
+        results = new Stack<Float>();          //instantiated stack in the constructor so that stack-
+    }                                          //is built in the application memory
+    
     @Override
     public String digit(String digit) {
-        
+       
     }
 
     @Override
