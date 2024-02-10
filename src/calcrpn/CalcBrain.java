@@ -62,8 +62,7 @@ public class CalcBrain implements CalcRPNOperations {
         }
         
         results.push(c);
-        return " " + op + "\n" + c;
-            
+        return " " + op + "\n" + c + " ";      
     }
 
     @Override
@@ -94,8 +93,7 @@ public class CalcBrain implements CalcRPNOperations {
     public String addDecimal() {
         if (!operand.contains(".")){
             operand += ".";
-            return operand;
         }
-        return "";
+        return ".";
     }
- } 
+ } //end of CalcBrain

@@ -346,34 +346,60 @@ public class CalcBrainTest {
     }
     
     @Test
-public void testExpression2() {
-    System.out.println("Testing expression: 1 2 + 3 × 4 -");
+    public void demoTest() {
+        System.out.println("Testing expression: 1 2 + 3 × 4 -");
 
-    // Instantiate CalcBrain
-    CalcBrain instance = new CalcBrain();
+        // Instantiate CalcBrain
+        CalcBrain instance = new CalcBrain();
 
-    // Define the expression
-    instance.digit("1");
-    instance.enterPressed();
-    instance.digit("2");
-    instance.enterPressed();
-    instance.operator("+");
-    instance.digit("3");
-    instance.enterPressed();
-     instance.operator("*");
-     instance.digit("4");
-    instance.enterPressed();
-    instance.operator("-");
+        // Define the expression
+        instance.digit("1");
+        instance.enterPressed();
+        instance.digit("2");
+        instance.enterPressed();
+        instance.operator("+");
+        instance.digit("3");
+        instance.enterPressed();
+         instance.operator("*");
+         instance.digit("4");
+        instance.enterPressed();
+        instance.operator("-");
 
-    // Get the final result
-    String result = instance.results.peek().toString();
+        // Get the final result
+        String result = instance.results.peek().toString();
 
-    // Define the expected result
-    String expectedResult = "5.0"; // The expected result of "1 2 + 3 × 4 -" is 5
+        String expectedResult = "5.0"; 
 
-    // Assert the result
-    assertEquals(expectedResult, result);  
-}
+        // Assert the result
+        assertEquals(expectedResult, result);  
+    }
+    
+    @Test
+    public void demoTest2() {
+        System.out.println("Testing expression: 1-2++4");
+
+        // Instantiate CalcBrain
+        CalcBrain instance = new CalcBrain();
+
+        // Define the expression
+        instance.digit("1");
+        instance.enterPressed();
+        instance.operator("-");
+        instance.digit("2");
+        instance.enterPressed();
+        instance.operator("+");
+        instance.operator("+");
+        instance.digit("4");
+        instance.enterPressed();
+
+        // Get the final result
+        String result = instance.results.peek().toString();
+
+        String expectedResult = "4.0"; 
+
+        // Assert the result
+        assertEquals(expectedResult, result);  
+    }
 
     /**
      * Test of operator method, of class CalcBrain.
@@ -433,8 +459,8 @@ public void testExpression2() {
     public void testAddDecimal() {
         System.out.println("addDecimal");
         CalcBrain instance = new CalcBrain();
-        instance.digit("3");
-        String expResult = "3.";
+        instance.digit(".");
+        String expResult = ".";
         String result = instance.addDecimal();
         assertEquals(expResult, result);
     }
