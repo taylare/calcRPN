@@ -366,7 +366,7 @@ public class CalcBrainTest {
         System.out.println("clearEntry");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
-        String expResult = "";
+        String expResult = "\n Cleared Digits \n";
         String result = instance.clearEntry();
         assertEquals(expResult, result);
     }
@@ -379,7 +379,7 @@ public class CalcBrainTest {
         System.out.println("clear");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
-        String expResult = "";
+        String expResult = "\n Clear All \n";
         String result = instance.clear();
         assertEquals(expResult, result);
     }

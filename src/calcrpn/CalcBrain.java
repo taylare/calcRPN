@@ -26,8 +26,11 @@ public class CalcBrain implements CalcRPNOperations {
     @Override
     public String operator(String op) {
         if (!operand.isEmpty()) {
-         return operand;
+            float number = Float.parseFloat(operand);
+            results.push(number);
+            operand = " ";
         }
+                
         if (results.size() < 2){
             return "";
         }
@@ -47,27 +50,35 @@ public class CalcBrain implements CalcRPNOperations {
                 c = b * a;
                 break;
             case "/":
-                c = b / a;
+                if (a!=0) {
+                    c = b / a;
+                }else {
+                    return "Error";
+                }
+                break;
+            case "^":
+                c = (float) Math.pow(b, a);
+                break;
         }
         
         results.push(c);
-        return Float.toString(c);
+        return " " + op + "\n" + c;
             
     }
 
     @Override
     public String clearEntry() {
         operand = "";
-        return "";
+        return "\n Cleared Digits \n";
     }
 
     @Override
     public String clear() {
         results.clear();
         operand = "";
-        return "";
+        return "\n Clear All \n";
     }
-
+   
     @Override
     public String enterPressed() {
         if (!operand.isBlank()) {
@@ -75,7 +86,7 @@ public class CalcBrain implements CalcRPNOperations {
              operand = "";
              return " ";
         }else {
-            return "";
+            return " ";
         }
     }
 
@@ -83,7 +94,7 @@ public class CalcBrain implements CalcRPNOperations {
     public String addDecimal() {
         if (!operand.contains(".")){
             operand += ".";
-            return ".";
+            return operand;
         }
         return "";
     }
