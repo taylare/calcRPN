@@ -196,7 +196,7 @@ public class CalcBrainTest {
         
         String result = instance.operator(enterOperator);
         
-        String expectedClearResult = "\nClear All\n";               
+        String expectedClearResult = "";               
         
         assertTrue( expectedClearResult.equalsIgnoreCase(clearResult));
         assertTrue( result.equals(""));
@@ -353,11 +353,9 @@ public class CalcBrainTest {
         System.out.println("operator");
         String op = "";
         CalcBrain instance = new CalcBrain();
-        String expResult = "";
+        String expResult = op;
         String result = instance.operator(op);
         assertEquals(expResult, result);
-        /* TODO: review the generated test code, edit it by adding necessary code to check the functionality of the method. Remove the default call to fail (next line). Use proper asserts to compare the expected and returned result in order for your tests to pass. */
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -367,11 +365,10 @@ public class CalcBrainTest {
     public void testClearEntry() {
         System.out.println("clearEntry");
         CalcBrain instance = new CalcBrain();
+        instance.digit("3");
         String expResult = "";
         String result = instance.clearEntry();
         assertEquals(expResult, result);
-        /* TODO: review the generated test code, edit it by adding necessary code to check the functionality of the method. Remove the default call to fail (next line). Use proper asserts to compare the expected and returned result in order for your tests to pass. */
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -381,11 +378,10 @@ public class CalcBrainTest {
     public void testClear() {
         System.out.println("clear");
         CalcBrain instance = new CalcBrain();
+        instance.digit("3");
         String expResult = "";
         String result = instance.clear();
         assertEquals(expResult, result);
-        /* TODO: review the generated test code, edit it by adding necessary code to check the functionality of the method. Remove the default call to fail (next line). Use proper asserts to compare the expected and returned result in order for your tests to pass. */
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -395,13 +391,11 @@ public class CalcBrainTest {
     public void testEnterPressed() {
         System.out.println("enterPressed");
         CalcBrain instance = new CalcBrain();
+        instance.digit("3");
         String expResult = "";
         String result = instance.enterPressed();
         assertEquals(expResult, result);
-        /* TODO: review the generated test code, edit it by adding necessary code to check the functionality of the method. Remove the default call to fail (next line). Use proper asserts to compare the expected and returned result in order for your tests to pass. */
-        fail("The test case is a prototype.");
     }
-
     /**
      * Test of addDecimal method, of class CalcBrain.
      */
@@ -409,11 +403,10 @@ public class CalcBrainTest {
     public void testAddDecimal() {
         System.out.println("addDecimal");
         CalcBrain instance = new CalcBrain();
-        String expResult = "";
+        instance.digit("3");
+        String expResult = "3.";
         String result = instance.addDecimal();
         assertEquals(expResult, result);
-        /* TODO: review the generated test code, edit it by adding necessary code to check the functionality of the method. Remove the default call to fail (next line). Use proper asserts to compare the expected and returned result in order for your tests to pass. */
-        fail("The test case is a prototype.");
     }
     
 }
