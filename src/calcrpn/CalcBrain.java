@@ -6,7 +6,7 @@ import java.util.Stack;
  * @author Tayla Rechichi
  * Date Created: February 06, 2024
  * Date Updated: NA
- */
+ **/
 
 public class CalcBrain implements CalcRPNOperations {
     Stack<Float> results;
@@ -28,7 +28,7 @@ public class CalcBrain implements CalcRPNOperations {
         if (!operand.isEmpty()) {
             float number = Float.parseFloat(operand);
             results.push(number);
-            operand = " ";
+            operand = "";
         }
                 
         if (results.size() < 2){
@@ -69,14 +69,14 @@ public class CalcBrain implements CalcRPNOperations {
     @Override
     public String clearEntry() {
         operand = "";
-        return "\n Cleared Digits \n";
+        return "\nCleared Digits\n";
     }
 
     @Override
     public String clear() {
         results.clear();
         operand = "";
-        return "\n Clear All \n";
+        return "\nClear All\n";
     }
    
     @Override

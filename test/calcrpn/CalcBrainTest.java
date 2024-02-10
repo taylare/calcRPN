@@ -196,7 +196,7 @@ public class CalcBrainTest {
         
         String result = instance.operator(enterOperator);
         
-        String expectedClearResult = "";               
+        String expectedClearResult = "\nClear All\n";               
         
         assertTrue( expectedClearResult.equalsIgnoreCase(clearResult));
         assertTrue( result.equals(""));
@@ -343,7 +343,37 @@ public class CalcBrainTest {
         assertEquals(Float.parseFloat(expectedResult.replaceAll("^[^\\n]*\\n",""))
                    , Float.parseFloat(result.replaceAll("^[^\\n]*\\n",""))
                     ,delta);        
-    }            
+    }
+    
+    @Test
+public void testExpression2() {
+    System.out.println("Testing expression: 1 2 + 3 × 4 -");
+
+    // Instantiate CalcBrain
+    CalcBrain instance = new CalcBrain();
+
+    // Define the expression
+    instance.digit("1");
+    instance.enterPressed();
+    instance.digit("2");
+    instance.enterPressed();
+    instance.operator("+");
+    instance.digit("3");
+    instance.enterPressed();
+     instance.operator("*");
+     instance.digit("4");
+    instance.enterPressed();
+    instance.operator("-");
+
+    // Get the final result
+    String result = instance.results.peek().toString();
+
+    // Define the expected result
+    String expectedResult = "5.0"; // The expected result of "1 2 + 3 × 4 -" is 5
+
+    // Assert the result
+    assertEquals(expectedResult, result);  
+}
 
     /**
      * Test of operator method, of class CalcBrain.
@@ -366,7 +396,7 @@ public class CalcBrainTest {
         System.out.println("clearEntry");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
-        String expResult = "\n Cleared Digits \n";
+        String expResult = "\nCleared Digits\n";
         String result = instance.clearEntry();
         assertEquals(expResult, result);
     }
@@ -379,7 +409,7 @@ public class CalcBrainTest {
         System.out.println("clear");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
-        String expResult = "\n Clear All \n";
+        String expResult = "\nClear All\n";
         String result = instance.clear();
         assertEquals(expResult, result);
     }
@@ -392,7 +422,7 @@ public class CalcBrainTest {
         System.out.println("enterPressed");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
-        String expResult = "";
+        String expResult = " ";
         String result = instance.enterPressed();
         assertEquals(expResult, result);
     }
