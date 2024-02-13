@@ -356,13 +356,10 @@ public class CalcBrainTest {
         instance.digit("1");
         instance.enterPressed();
         instance.digit("2");
-        instance.enterPressed();
         instance.operator("+");
         instance.digit("3");
-        instance.enterPressed();
-         instance.operator("*");
-         instance.digit("4");
-        instance.enterPressed();
+        instance.operator("*");
+        instance.digit("4");
         instance.operator("-");
 
         // Get the final result
@@ -376,7 +373,7 @@ public class CalcBrainTest {
     
     @Test
     public void demoTest2() {
-        System.out.println("Testing expression: 1-2++4");
+        System.out.println("Testing expression: 1 - 2 + + 4"); //1 2 - 4 +
 
         // Instantiate CalcBrain
         CalcBrain instance = new CalcBrain();
@@ -465,4 +462,80 @@ public class CalcBrainTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test of stack push, of class CalcBrain
+     */
+    @Test
+    public void testStackPush(){
+        System.out.println("Testing stack push");
+        CalcBrain instance = new CalcBrain();
+        instance.results.push(3.0f);
+        instance.results.push(5.0f);
+        instance.results.push(9.0f);
+        instance.results.push(11.0f);
+        int stackSize = instance.results.size(); //checking size of stack
+        int expectedSize = 4;
+        assertEquals(expectedSize, stackSize);   
+    }
+    
+     /**
+     * Test of stack pop, of class CalcBrain
+     */
+    @Test
+    public void testStackPop(){
+        System.out.println("Testing stack pop");
+        CalcBrain instance = new CalcBrain();
+        instance.results.push(7.0f);
+        instance.results.push(12.0f);
+        instance.results.push(23.0f);
+        float popResult = instance.results.pop();
+        float expectedPop = 23.0f;
+        assertEquals(expectedPop, popResult, 0.0f);
+    }
+    
+     /**
+     * Test of stack peek, of class CalcBrain
+     */
+    @Test
+    public void testStackPeek(){
+        System.out.println("Testing stack peek");
+        CalcBrain instance = new CalcBrain();
+        
+        instance.results.push(2.0f);
+        instance.results.push(4.0f);
+        instance.results.push(6.0f);
+        instance.results.push(8.0f);
+        instance.results.push(10.0f);
+        
+        float peekResult = instance.results.peek();
+        float expectedPeek = 10.0f;
+        assertEquals(expectedPeek, peekResult, 0.0f);
+        
+        //check size remains the same
+        int stackSize = instance.results.size();
+        int expectedStackSize = 5;
+        assertEquals(expectedStackSize, stackSize);
+    }
+    
+    /**
+     * Test of stack empty, of class CalcBrain
+     */
+    @Test
+    public void testStackEmpty(){
+        System.out.println("Testing empty stack");
+        CalcBrain instance = new CalcBrain();
+        
+        Boolean isEmpty = instance.results.empty();
+        assertTrue(isEmpty);
+        
+        instance.results.push(3.0f);
+        int stackSize = instance.results.size();
+        
+        isEmpty = instance.results.empty();
+        assertFalse(isEmpty);
+        
+        instance.results.pop();
+        isEmpty = instance.results.empty();
+        assertTrue(isEmpty);
+    }
 }

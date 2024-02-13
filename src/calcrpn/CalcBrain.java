@@ -12,8 +12,8 @@ public class CalcBrain implements CalcRPNOperations {
     Stack<Float> results;
     String operand;
     
-    public CalcBrain()   {                     //serves as calculator's working memory
-        results = new Stack<Float>();          //instantiated stack in the constructor so that stack-
+    public CalcBrain()   {                      //serves as calculator's working memory
+        results = new Stack<Float >();          //instantiated stack in the constructor so that stack-
         operand = "";                          //is built in the application memory
     }                                          
     
@@ -81,7 +81,7 @@ public class CalcBrain implements CalcRPNOperations {
     @Override
     public String enterPressed() {
         if (!operand.isBlank()) {
-             results.push(Float.parseFloat(operand));
+             results.push(Float.valueOf(operand));
              operand = "";
              return " ";
         }else {

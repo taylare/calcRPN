@@ -57,8 +57,7 @@ public class CalcRPNView extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("RPN Calculator by Michael release 1.0");
-        setBackground(new java.awt.Color(153, 153, 153));
+        setTitle("RPN Calculator by Tayla release 1.0");
         setResizable(false);
 
         jButton1.setText("1");
