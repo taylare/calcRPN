@@ -347,7 +347,7 @@ public class CalcBrainTest {
     
     @Test
     public void demoTest() {
-        System.out.println("Testing expression: 1 2 + 3 × 4 -");
+        System.out.println("Testing expression: 1 2 + 3 × 4 -"); 
 
         // Instantiate CalcBrain
         CalcBrain instance = new CalcBrain();
@@ -381,18 +381,15 @@ public class CalcBrainTest {
         // Define the expression
         instance.digit("1");
         instance.enterPressed();
-        instance.operator("-");
         instance.digit("2");
-        instance.enterPressed();
-        instance.operator("+");
-        instance.operator("+");
+        instance.operator("-");
         instance.digit("4");
-        instance.enterPressed();
-
+        instance.operator("+");
+        
         // Get the final result
         String result = instance.results.peek().toString();
 
-        String expectedResult = "4.0"; 
+        String expectedResult = "3.0"; 
 
         // Assert the result
         assertEquals(expectedResult, result);  
@@ -529,7 +526,6 @@ public class CalcBrainTest {
         assertTrue(isEmpty);
         
         instance.results.push(3.0f);
-        int stackSize = instance.results.size();
         
         isEmpty = instance.results.empty();
         assertFalse(isEmpty);

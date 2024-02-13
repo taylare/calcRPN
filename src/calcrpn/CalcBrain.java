@@ -13,7 +13,7 @@ public class CalcBrain implements CalcRPNOperations {
     String operand;
     
     public CalcBrain()   {                      //serves as calculator's working memory
-        results = new Stack<Float >();          //instantiated stack in the constructor so that stack-
+        results = new Stack<Float>();          //instantiated stack in the constructor so that stack-
         operand = "";                          //is built in the application memory
     }                                          
     
@@ -25,10 +25,10 @@ public class CalcBrain implements CalcRPNOperations {
 
     @Override
     public String operator(String op) {
-        if (!operand.isEmpty()) {
-            float number = Float.parseFloat(operand);
-            results.push(number);
-            operand = "";
+        if (!operand.isEmpty()) {                           //checks if operand is empty,
+            float number = Float.parseFloat(operand);       //if not then converts numbers to float and pushes on top of the stack
+            results.push(number);                          
+            operand = "";                                   //clears operand to prepare for next number
         }
                 
         if (results.size() < 2){
@@ -61,7 +61,7 @@ public class CalcBrain implements CalcRPNOperations {
                 break;
         }
         
-        results.push(c);
+        results.push(c);                                       //moving c to the top of the stack incase previous results are to be used
         return " " + op + "\n" + c + " ";      
     }
 
@@ -81,7 +81,7 @@ public class CalcBrain implements CalcRPNOperations {
     @Override
     public String enterPressed() {
         if (!operand.isBlank()) {
-             results.push(Float.valueOf(operand));
+             results.push(Float.valueOf(operand));      //pushes value onto stack after pressing enter
              operand = "";
              return " ";
         }else {
