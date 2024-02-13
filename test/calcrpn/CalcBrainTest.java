@@ -352,7 +352,6 @@ public class CalcBrainTest {
         // Instantiate CalcBrain
         CalcBrain instance = new CalcBrain();
 
-        // Define the expression
         instance.digit("1");
         instance.enterPressed();
         instance.digit("2");
@@ -362,12 +361,8 @@ public class CalcBrainTest {
         instance.digit("4");
         instance.operator("-");
 
-        // Get the final result
         String result = instance.results.peek().toString();
-
         String expectedResult = "5.0"; 
-
-        // Assert the result
         assertEquals(expectedResult, result);  
     }
     
@@ -378,7 +373,6 @@ public class CalcBrainTest {
         // Instantiate CalcBrain
         CalcBrain instance = new CalcBrain();
 
-        // Define the expression
         instance.digit("1");
         instance.enterPressed();
         instance.digit("2");
@@ -386,12 +380,8 @@ public class CalcBrainTest {
         instance.digit("4");
         instance.operator("+");
         
-        // Get the final result
         String result = instance.results.peek().toString();
-
         String expectedResult = "3.0"; 
-
-        // Assert the result
         assertEquals(expectedResult, result);  
     }
 

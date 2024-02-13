@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * @author Tayla Rechichi
  * Date Created: February 06, 2024
- * Date Updated: NA
+ * Date Updated: February 12, 2024
  **/
 
 public class CalcBrain implements CalcRPNOperations {
@@ -61,7 +61,7 @@ public class CalcBrain implements CalcRPNOperations {
                 break;
         }
         
-        results.push(c);                                       //moving c to the top of the stack incase previous results are to be used
+        results.push(c);                              //moving c to the top of the stack incase previous results are to be used
         return " " + op + "\n" + c + " ";      
     }
 
