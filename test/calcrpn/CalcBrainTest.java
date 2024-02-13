@@ -391,25 +391,71 @@ public class CalcBrainTest {
     @Test
     public void testOperator() {
         System.out.println("operator");
-        String op = "";
         CalcBrain instance = new CalcBrain();
-        String expResult = op;
-        String result = instance.operator(op);
-        assertEquals(expResult, result);
+
+        // Case 1: Addition
+        instance.digit("3");
+        instance.digit("5");
+        instance.enterPressed();
+        instance.digit("2");
+        instance.operator("+");
+        float result = instance.results.peek();
+        assertEquals(37.0f, result, 0.0f);
+
+        // Case 2: Subtraction
+        instance.digit("8");
+        instance.operator("-");
+        result = instance.results.peek();
+        assertEquals(29.0f, result, 0.0f);
+
+        // Case 3: Multiplication
+        instance.digit("4");
+        instance.operator("*");
+        result = instance.results.peek();
+        assertEquals(116.0f, result, 0.0f);
+
+        // Case 4: Division
+        instance.digit("2");
+        instance.operator("/");
+        result = instance.results.peek();
+        assertEquals(58.0f, result, 0.0f);
+
+        // Case 5: Division by zero
+        instance.digit("0");
+        String errorMessage = instance.operator("/");
+        assertEquals("Error", errorMessage);
+
+        // Case 6: Exponentiation
+        instance.clear();
+        instance.digit("2");
+        instance.enterPressed();
+        instance.digit("3");
+        instance.operator("^");
+        result = instance.results.peek();
+        assertEquals(8.0f, result, 0.0f);
+
     }
 
     /**
      * Test of clearEntry method, of class CalcBrain.
      */
-    @Test
+   @Test
     public void testClearEntry() {
         System.out.println("clearEntry");
         CalcBrain instance = new CalcBrain();
         instance.digit("3");
         String expResult = "\nCleared Digits\n";
+        // Check the return value
         String result = instance.clearEntry();
         assertEquals(expResult, result);
+        // Check if operand is cleared
+        assertTrue(instance.operand.isEmpty());
+        // Check if stack is unaffected
+        int stackSize = instance.results.size();
+        int expectedSize = 0;
+        assertEquals(expectedSize, stackSize);   
     }
+
 
     /**
      * Test of clear method, of class CalcBrain.
@@ -422,6 +468,15 @@ public class CalcBrainTest {
         String expResult = "\nClear All\n";
         String result = instance.clear();
         assertEquals(expResult, result);
+        // Check the return value
+        result = instance.clear();
+        assertEquals(expResult, result);
+        // Check if stack is cleared
+        int stackSize = instance.results.size();
+        int expectedSize = 0;
+        assertEquals(expectedSize, stackSize);   
+        // Check if operand is cleared
+        assertTrue(instance.operand.isEmpty());
     }
 
     /**
@@ -431,10 +486,25 @@ public class CalcBrainTest {
     public void testEnterPressed() {
         System.out.println("enterPressed");
         CalcBrain instance = new CalcBrain();
-        instance.digit("3");
-        String expResult = " ";
+         // Case 1: When no digit is entered
         String result = instance.enterPressed();
+        String expResult = " ";
         assertEquals(expResult, result);
+        // Check if operand is empty after calling enterPressed()
+        assertTrue(instance.operand.isBlank());
+        // Case 2: When digits are entered
+        instance.digit("3");
+        expResult = " ";
+        result = instance.enterPressed();
+        assertEquals(expResult, result);
+        // Check if operand is empty after calling enterPressed() with digits entered
+        assertTrue(instance.operand.isBlank());
+        // Check the result stack
+        instance.digit("1");
+        instance.enterPressed();
+        float peekResult = instance.results.peek();
+        float expectedPeek = 1.0f;
+        assertEquals(expectedPeek, peekResult, 0.0f);  
     }
     /**
      * Test of addDecimal method, of class CalcBrain.
@@ -443,11 +513,46 @@ public class CalcBrainTest {
     public void testAddDecimal() {
         System.out.println("addDecimal");
         CalcBrain instance = new CalcBrain();
-        instance.digit(".");
-        String expResult = ".";
-        String result = instance.addDecimal();
-        assertEquals(expResult, result);
+
+        instance.digit("3");
+        instance.addDecimal();
+        instance.digit("5");
+        instance.enterPressed();
+        String expResult = "3.5";
+        String result = instance.results.peek().toString();
+        assertEquals(expResult, result);  
     }
+    
+    @Test
+    public void testMultipleDecimals() {
+        System.out.println("addDecimal");
+        CalcBrain instance = new CalcBrain();
+        //Test 1: 1..2 + 1..2
+        instance.digit("1");
+        instance.addDecimal();
+        instance.addDecimal(); 
+        instance.addDecimal();
+        instance.digit("2");
+        instance.enterPressed();
+        instance.digit("1");
+        instance.addDecimal();
+        instance.addDecimal(); 
+        instance.digit("2");
+        instance.enterPressed();
+        instance.operator("+");
+
+        String result = instance.results.peek().toString();
+        String expectedResult = "2.4"; 
+        assertEquals(expectedResult, result);  
+        //Test 2: .5
+        instance.addDecimal();
+        instance.digit("5");
+        instance.enterPressed();
+
+        result = instance.results.peek().toString();
+        expectedResult = "0.5"; 
+        assertEquals(expectedResult, result); 
+        }
     
     /**
      * Test of stack push, of class CalcBrain

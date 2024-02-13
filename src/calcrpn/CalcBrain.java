@@ -61,19 +61,19 @@ public class CalcBrain implements CalcRPNOperations {
                 break;
         }
         
-        results.push(c);                              //moving c to the top of the stack incase previous results are to be used
+        results.push(c);                      //moving c to the top of the stack incase previous results are to be used
         return " " + op + "\n" + c + " ";      
     }
 
     @Override
     public String clearEntry() {
-        operand = "";
+        operand = "";             
         return "\nCleared Digits\n";
     }
 
     @Override
     public String clear() {
-        results.clear();
+        results.clear();                 
         operand = "";
         return "\nClear All\n";
     }
