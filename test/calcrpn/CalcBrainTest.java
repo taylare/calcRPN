@@ -401,6 +401,8 @@ public class CalcBrainTest {
         instance.operator("+");
         float result = instance.results.peek();
         assertEquals(37.0f, result, 0.0f);
+        // Test stack after addition operation
+        assertEquals(1, instance.results.size()); // Ensure only one item in the stack after addition
 
         // Case 2: Subtraction
         instance.digit("8");
@@ -408,11 +410,17 @@ public class CalcBrainTest {
         result = instance.results.peek();
         assertEquals(29.0f, result, 0.0f);
 
+        // Test stack after subtraction operation
+        assertEquals(1, instance.results.size()); // Ensure only one item in the stack after subtraction
+
         // Case 3: Multiplication
         instance.digit("4");
         instance.operator("*");
         result = instance.results.peek();
         assertEquals(116.0f, result, 0.0f);
+
+        // Test stack after multiplication operation
+        assertEquals(1, instance.results.size()); // Ensure only one item in the stack after multiplication
 
         // Case 4: Division
         instance.digit("2");
@@ -420,10 +428,16 @@ public class CalcBrainTest {
         result = instance.results.peek();
         assertEquals(58.0f, result, 0.0f);
 
+        // Test stack after division operation
+        assertEquals(1, instance.results.size()); // Ensure only one item in the stack after division
+
         // Case 5: Division by zero
         instance.digit("0");
         String errorMessage = instance.operator("/");
         assertEquals("Error", errorMessage);
+
+        // Test stack after division by zero
+        assertEquals(0, instance.results.size()); // Ensure stack is empty after division by zero
 
         // Case 6: Exponentiation
         instance.clear();
@@ -434,6 +448,8 @@ public class CalcBrainTest {
         result = instance.results.peek();
         assertEquals(8.0f, result, 0.0f);
 
+        // Test stack after exponentiation operation
+        assertEquals(1, instance.results.size()); // Ensure only one item in the stack after exponentiation
     }
 
     /**
