@@ -93,7 +93,8 @@ public class CalcBrain implements CalcRPNOperations {
     public String addDecimal() {
         if (!operand.contains(".")){
             operand += ".";
+            return ".";
         }
-        return ".";
+        return "";
     }
  } //end of CalcBrain
